@@ -11,13 +11,8 @@ This project was developed as a student project for learning purposes. A key goa
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [Dependencies](#dependencies)
-- [Database Schema](#database-schema)
-- [Screenshots](#screenshots)
 - [Contributing](#contributing)
-- [Known Issues](#known-issues)
-- [Future Enhancements](#future-enhancements)
-- [License](#license)
-- [Contact](#contact)
+- [Me](#Me)
 - [Acknowledgments](#acknowledgments)
 
 ## Application Mockup
