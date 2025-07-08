@@ -1,100 +1,90 @@
-# 🧮 BMI Calculator
 
-A Windows Forms application that calculates BMI (Body Mass Index) and body fat percentage, tracks history, visualizes progress with charts and saves data to a database
+# BMI & Calorie Tracker WinForms App
 
-![App Mockup](https://raw.githubusercontent.com/revanataruk/BMI-Calculator/master/mockup.jpg)
+This is a desktop application built with **Windows Forms** and **.NET Framework 4.8** designed to help users calculate their Body Mass Index (BMI), track their daily caloric intake, and receive personalized health recommendations.
 
-## 🧩 Features
+This project was developed as a student project for learning purposes. A key goal was to refactor the initial code from a single-class structure into a clean **Model-View-Controller (MVC)** architecture to improve code organization, scalability, and maintainability.
 
-- 🔢 Calculate BMI based on height and weight
--🧍‍♂️ Determine BMI category (Skinny, Normal, Fat, Obesity)
-- 💪 Calculate body fat percentage based on BMI, age, and gender
-- 🕒 Track history of BMI measurements
-- 🧠 Data persistence with SQLite database
-- 📊 Visualize BMI progress with interactive charts (LiveCharts)
-- 📃 View list of past measurements (with date, BMI, fat %, and category)
-- ↩️ Navigation between panels (Calculator ↔ Chart History)
-- 🧑‍💻 Simple and intuitive Windows Forms interface
-- 💾 Auto-save BMI and body fat data into local database on calculation
+## Features
 
-## 📚 Technologies Used
+This application includes a comprehensive set of features for personal health tracking:
 
-- C# (.NET Framework 4.8)
-- Windows Forms
-- LiveCharts (for data visualization)
-- Visual Studio 2022
-- SQLite (System.Data.SQLite)
+  * **User Authentication & Management**
 
-## 📋 Requirements
+      * **Registration:** Users can create a new account with a unique email and password.
+      * **Login/Logout:** Secure login functionality that links all data to the specific user.
+      * **Account Panel:** After logging in, users can securely change their registered email address or update their password, with current password verification for security.
 
-- Windows OS
-- .NET Framework 4.8 or higher
-- Visual Studio 2022 (for development)
+  * **Core Health Metrics**
 
-## 📁 Installation
+      * **BMI (Body Mass Index):** Calculates the user's BMI based on height, weight, age, and gender, then assigns a standard weight category (Underweight, Normal, Overweight, Obesity).
+      * **Body Fat Percentage:** Provides an *estimation* of body fat using a formula based on the calculated BMI and user's age.
+      * **BMR (Basal Metabolic Rate):** Calculates the number of calories the body needs per day at rest. This value is used as the **Daily Calorie Target**.
 
-1. Clone this repository:
-   ```
-   git clone https://github.com/username/BMI-Calculator.git
-   ```
+  * **Personalized Recommendations**
 
-2. Open the solution file (`BMI-Calculator.sln`) in Visual Studio 2022
+      * The application dynamically generates tailored diet and exercise advice based on the user's BMI category. For example, a user in the "Overweight" category will receive suggestions for creating a calorie deficit and focusing on cardiovascular exercise, while an "Underweight" user will get advice on building muscle mass.
 
-3. Build the solution (Press F6 or use Build > Build Solution)
+  * **Detailed Calorie Tracker**
 
-4. Run the application (Press F5 or use Debug > Start Debugging)
+      * **Meal Logging:** Users can log food items and their calorie counts for **Breakfast, Lunch, Dinner,** and **Snacks**.
+      * **Date-Based History:** A `DateTimePicker` allows users to view and log entries for any specific date, not just the current day.
+      * **Daily Summary:** A `ListView` displays all food items logged for the selected date.
+      * **Live Calorie Status:** A status label provides real-time feedback by comparing consumed calories against the target BMR, showing messages like `Deficit -350 Cal`, `Surplus +200 Cal`, or `Achieved`.
 
-## 👨‍💻 Usage
+  * **Data Persistence & Visualization**
 
-1.Enter your height (cm), weight (kg), age
-2.Select your gender
-3.Click Calculate
-4.View your BMI, Body Fat %, and category
-5.Your data is automatically saved
-6.Click the View History button to see your past entries and chart
+      * **Persistent Data:** All user and health data is stored in a local MySQL database. Upon logging in, the application automatically loads and displays the user's last recorded BMI, Body Fat, BMR, and health recommendations.
+      * **History Chart:** The calorie tracker includes a simple bar chart that visualizes the total calorie intake for the last 3 days, making it easy to see recent trends.
 
-## ⚙️ How BMI is Calculated
-The application uses the standard BMI formula:
-```
-BMI = weight(kg) / (height(m))²
-```
+## Project Structure
 
-BMI Categories:
-- Below 18.5: Skinny
-- 18.5 to 24.9: Normal
-- 25 to 29.9: Fat
-- 30 and above: Obesity
+The application is structured using the **MVC (Model-View-Controller)** pattern to separate concerns:
 
-Body Fat Percentage is estimated using the following formulas:
-- For men: (1.20 × BMI) + (0.23 × Age) - 16.2
-- For women: (1.20 × BMI) + (0.23 × Age) - 5.4
+  - **/Models**: Contains the C\# classes that represent the application's data (`User`, `BmiRecord`) as well as the **Repository** classes (`UserRepository`, etc.) which handle all database queries and communication.
+  - **/Views**: The `Form1.cs` class acts as the View. It is responsible for presenting the data to the user and capturing all user interactions (button clicks, text input). It contains minimal logic.
+  - **/Controllers**: The `MainController.cs` is the "brain" of the application. It receives input from the View, processes it (often by interacting with the Models/Services), and decides what to display next, telling the View how to update.
 
-## 📦 Dependencies
+## Getting Started
 
-- LiveCharts.WinForms
-- LiveCharts.Wpf
-- System.Data.SQLite
+Follow these steps to set up and run the project on your local machine.
 
-## 🎯 Future Enhancements
+### Prerequisites
 
-- Add user profiles
-- Export data to CSV or Excel
-- Additional health metrics
-- Diet and exercise recommendations based on BMI
-- More detailed progress analytics
+  - **Visual Studio** 2019 or later (developed with VS 2022)
+  - **.NET Framework 4.8**
+  - A local MySQL server environment, such as **XAMPP**, WAMP, or a direct MySQL installation.
 
-## 📄 License
+### 1\. Database Setup
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+The application requires a local MySQL database.
 
-## 📌 Contributing
+1.  **Start Your MySQL Server**: Launch your XAMPP Control Panel (or similar tool) and start the **Apache** and **MySQL** services.
+2.  **Create the Database**:
+      - Navigate to `http://localhost/phpmyadmin` in your web browser.
+      - Click on "New" to create a database.
+      - Enter the database name as **`bmi_calculator`** and click "Create".
+3.  **Import the Schema**:
+      - Select the newly created `bmi_calculator` database.
+      - Go to the **SQL** tab.
+      - Open the `BMIC.sql.txt` file from this project, copy its entire content, and paste it into the SQL query box.
+      - Click "Go" to execute the script. This will create all the necessary tables.
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin feature-name`
-5. Submit a pull request
+### 2\. Application Setup
 
-## 📌 Notes
+1.  **Clone the Repository**:
+    ```sh
+    git clone https://github.com/your-username/your-repository-name.git
+    ```
+2.  **Open in Visual Studio**: Open the `.sln` solution file in Visual Studio.
+3.  **Restore NuGet Packages**: Visual Studio should restore the required packages automatically. If not, right-click the solution in the Solution Explorer and select "Restore NuGet Packages".
+4.  **Check Connection String**: The application assumes a default local MySQL setup with user `root` and no password. If your setup is different, update the `_connectionString` variable in all repository files (e.g., `UserRepository.cs`, `BmiRecordRepository.cs`).
+5.  **Build and Run**: Press **F5** or click the "Start" button to build and run the application.
 
-- This project was built as part of a learning process and small assignment. for learning purpose.
+## Dependencies
+
+This project relies on the following NuGet packages:
+
+  - [`MySql.Data`](https://www.google.com/search?q=%5Bhttps://www.nuget.org/packages/MySql.Data/%5D\(https://www.nuget.org/packages/MySql.Data/\)): The official Oracle connector for MySQL database communication.
+  - [`System.Drawing.Common`](https://www.google.com/search?q=%5Bhttps://www.nuget.org/packages/System.Drawing.Common/%5D\(https://www.nuget.org/packages/System.Drawing.Common/\)): Provides access to GDI+ graphics functionality.
+  - [`System.Threading.Tasks.Extensions`](https://www.google.com/search?q=%5Bhttps://www.nuget.org/packages/System.Threading.Tasks.Extensions/%5D\(https://www.nuget.org/packages/System.Threading.Tasks.Extensions/\)): A dependency required by the MySQL connector.
