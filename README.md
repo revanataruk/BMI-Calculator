@@ -1,8 +1,24 @@
-# BMI & Calorie Tracker WinForms App
+# BMI & Calorie Tracker WinForms App MVC
 
 This is a desktop application built with **Windows Forms** and **.NET Framework 4.8** designed to help users calculate their Body Mass Index (BMI), track their daily caloric intake, and receive personalized health recommendations.
 
 This project was developed as a student project for learning purposes. A key goal was to refactor the initial code from a single-class structure into a clean **Model-View-Controller (MVC)** architecture to improve code organization, scalability, and maintainability. The user interface is styled using the **Nailoong** custom theme components.
+
+## Table of Contents
+
+- [Application Mockup](#application-mockup)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Dependencies](#dependencies)
+- [Database Schema](#database-schema)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [Known Issues](#known-issues)
+- [Future Enhancements](#future-enhancements)
+- [License](#license)
+- [Contact](#contact)
+- [Acknowledgments](#acknowledgments)
 
 ## Application Mockup
 
@@ -86,3 +102,39 @@ This project relies on the following NuGet packages:
 -   [`MySql.Data`](https://www.nuget.org/packages/MySql.Data/): The official Oracle connector for MySQL database communication.
 -   [`System.Drawing.Common`](https://www.nuget.org/packages/System.Drawing.Common/): Provides access to GDI+ graphics functionality.
 -   [`System.Threading.Tasks.Extensions`](https://www.nuget.org/packages/System.Threading.Tasks.Extensions/): A dependency required by the MySQL connector.
+
+## Contributing
+
+This is a student project, but contributions are welcome! If you'd like to contribute:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Development Guidelines
+
+- Follow the existing MVC architecture pattern
+- Add appropriate error handling for database operations
+- Write clear, descriptive commit messages
+- Test your changes thoroughly before submitting
+
+## Me
+
+**Developer:** [Revan Diwangkara]
+- **Email:** [Diwangkararevam@gmail.com]
+- **GitHub:** [@Revanataruk](https://github.com/Revanataruk)
+Feel free to reach out if you have any questions, suggestions, or would like to collaborate on similar projects!
+
+## Acknowledgments
+
+- **Nailoong Theme Components** for the beautiful UI styling
+- **MySQL** for providing a robust database solution
+- **Visual Studio** for the excellent development environment
+- **Stack Overflow Community** for troubleshooting support during development
+- **My Academic Supervisor** for guidance throughout the project development
+
+---
+
+*This project was developed as part of my learning journey in software development. I hope it serves as a useful reference for other students working on similar MVC desktop applications.*
